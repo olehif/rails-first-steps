@@ -1,0 +1,13 @@
+<% @questions.each do |q| %>
+  <%= q.title %>
+  <br>
+  <%= q.body  %>
+  <br>
+  <p>Fields</p>
+  <%  q.fields.each do |f| %>
+  <%= f.variant %>
+  <%= f.count %>
+  <%= button_to "Increment", increment_path(id: f.id) %>
+  <br>
+  <% end %>
+<% end %>
