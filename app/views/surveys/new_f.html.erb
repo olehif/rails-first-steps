@@ -1,0 +1,6 @@
+<%= form_for @field, url: {action: "create_f"}  do |f| %>
+  <%= f.text_field :variant %>
+  <%= f.collection_select :question_id, Question.all, :id, :title, prompt: true %>
+  <%= f.submit %>
+<% end %>
+  

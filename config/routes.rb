@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
   root 'surveys#index'
   post '/increment/:id', to: 'surveys#increment', as: :increment
+  get  '/newq', to: 'surveys#new_q', as: :newq
+  get  '/newf', to: 'surveys#new_f', as: :newf
+  post '/create_q', to: 'surveys#create_q',as: :create_q
+  post '/create_f', to: 'surveys#create_f',as: :create_f
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
