@@ -1,14 +1,7 @@
 <% @questions.each do |q| %>
-  <%= q.title %>
+  <%= link_to q.title, show_path(id: q.id) %>
   <br>
   <%= q.body  %>
   <br>
-  <p>Fields</p>
-  <%  q.fields.each do |f| %>
-  <%= f.variant %>
-  <%= f.count %>
-  <%= button_to "Increment", increment_path(id: f.id) %>
-  <br>
-  <% end %>
   <hr>
 <% end %>
