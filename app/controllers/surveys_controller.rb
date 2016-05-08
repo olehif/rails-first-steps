@@ -40,7 +40,7 @@ class SurveysController < ApplicationController
       v.save
       @f.count += 1
       if @f.save
-        redirect_to root_path
+        render 'thanks'
       else
         redirect_to root_path
       end

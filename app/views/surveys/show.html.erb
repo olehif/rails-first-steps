@@ -1,12 +1,21 @@
+<div class="question_<%= @question.question_type %>">
   <%= @question.title %>
   <br>
   <%= @question.body  %>
   <br>
   <p>Fields</p>
   <%  @question.fields.each do |f| %>
-  <%= f.variant %>
-  <%= f.count %>
-  <%= button_to "Increment", increment_path(id: f.id) %>
-  <br>
+    <span><%= f.variant %></span>
+
+    <% if !f.question.active %>
+      <span><%= f.count %></span>
+    <% end %>
+
+    <% if f.question.active and !current_user.votes.where(question_id: f.question.id).exists? %>
+      <%= button_to "Increment", increment_path(id: f.id) %>
+    <% end %>
+
+     <br>
   <% end %>
   <hr>
+</div>
