@@ -12,7 +12,7 @@
     <% end %>
 
     <% if f.question.active and !current_user.votes.where(question_id: f.question.id).exists? %>
-      <%= button_to "Increment", increment_path(id: f.id) %>
+      <%= button_to "Проголосувати", increment_path(id: f.id), class: "btn btn-primary btn-sm inline" %>
     <% end %>
 
      <br>
