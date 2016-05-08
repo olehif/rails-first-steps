@@ -2,15 +2,15 @@ class SurveysController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    @questions = Question.all
+    @questions   = Question.all
   end
 
   def show
-    @question = Question.find(params[:id])
+    @question    = Question.find(params[:id])
   end
 
   def new_q
-    @question = Question.new
+    @question    = Question.new
   end
 
   def create_q
@@ -20,12 +20,12 @@ class SurveysController < ApplicationController
   end
 
   def new_f
-    @field = Field.new
-    @questions = Question.all
+    @field       = Field.new
+    @questions   = Question.all
   end
 
   def create_f
-    @field = Field.new(params.require(:field).permit(:variant,:question_id))
+    @field       = Field.new(params.require(:field).permit(:variant,:question_id))
     @field.count = 0
     @field.save
     redirect_to root_path
@@ -33,11 +33,17 @@ class SurveysController < ApplicationController
 
   def increment
     @f = Field.find(params[:id])
-    @f.count += 1
-    if @f.save
+    if    Vote.where(user_id: current_user.id, question_id: @f.question.id).exists?
       redirect_to root_path
     else
-      render 'index'
+      v = Vote.new(user_id: current_user.id, question_id: @f.question.id)
+      v.save
+      @f.count += 1
+      if @f.save
+        redirect_to root_path
+      else
+        redirect_to root_path
+      end
     end
   end
 end
