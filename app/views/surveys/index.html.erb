@@ -4,7 +4,7 @@
         <div class="thumbnail">
           <div class="caption">
             <h3><%= link_to q.title, show_path(id: q.id) %></h3>
-            <p><%= q.body  %></p>
+            <p><%= truncate(q.body, :length => 280)  %></p>
             <p><%= button_to "Детальніше", show_path(id: q.id), class: "btn btn-primary", method: :get %></p>
           </div>
         </div>

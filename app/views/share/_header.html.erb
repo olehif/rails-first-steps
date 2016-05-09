@@ -1,6 +1,6 @@
 <div class="navbar navbar-default navbar-static-top">
 		<div class="container">
-				<a href="#" class="navbar-brand">Survey</a>
+				<span><%= link_to "Survey", root_path, class: "navbar-brand" %></span>
 
 					<ul class="nav navbar-nav navbar-right">
 						<% if user_signed_in? %>
