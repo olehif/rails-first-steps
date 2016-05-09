@@ -1,8 +1,13 @@
-
-<% @questions.each do |q| %>
-  <%= link_to q.title, show_path(id: q.id) %>
-  <br>
-  <%= q.body  %>
-  <br>
-  <hr>
-<% end %>
+<div class="row">
+    <% @questions.each do |q| %>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <div class="caption">
+            <h3><%= link_to q.title, show_path(id: q.id) %></h3>
+            <p><%= q.body  %></p>
+            <p><%= button_to "Детальніше", show_path(id: q.id), class: "btn btn-primary", method: :get %></p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+</div>
