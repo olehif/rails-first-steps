@@ -1,15 +1,22 @@
 <div class="question_<%= @question.question_type %>">
-  <%= @question.title %>
+  <div class="row">
+  <div class="col-md-8">
+  <div class="page-header"><h2><%= @question.title %></h2></div>
   <br>
-  <%= @question.body  %>
+  <p style="font-size: 17px !important;"><%= @question.body  %></p>
   <br>
-  <p>Fields</p>
+  </div>
+  <div class="col-md-4">
+  <div class="thumbnail">
+  <div class="caption">
   <%  @question.fields.each do |f| %>
-    <span><%= f.variant %></span>
+    <h3><%= f.variant %>
 
     <% if !f.question.active %>
-      <span><%= f.count %></span>
+      <br>
+      <small>голосів: <%= f.count %></small>
     <% end %>
+    </h3>
 
     <% if f.question.active and !current_user.votes.where(question_id: f.question.id).exists? %>
       <%= button_to "Проголосувати", increment_path(id: f.id), class: "btn btn-primary btn-sm inline" %>
@@ -17,5 +24,8 @@
 
      <br>
   <% end %>
-  <hr>
+  </div>
+  </div>
+  </div>
+  </div>
 </div>
