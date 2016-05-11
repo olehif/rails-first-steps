@@ -1,9 +1,9 @@
-<div class="question_<%= @question.question_type %>">
+<div>
   <div class="row">
   <div class="col-md-8">
   <div class="page-header"><h2><%= @question.title %></h2></div>
   <br>
-  <p style="font-size: 17px !important;"><%= @question.body  %></p>
+  <p style="font-size: 17px !important;"><%= @question.body %></p>
   <br>
   </div>
   <div class="col-md-4">
@@ -19,9 +19,15 @@
     </h3>
 
     <% if f.question.active and !current_user.votes.where(question_id: f.question.id).exists? %>
-      <%= button_to "Проголосувати", increment_path(id: f.id), class: "btn btn-primary btn-sm inline" %>
+      <% case f.question.question_type %>
+        <% when 1 %>
+          <%= button_to "Проголосувати", increment_path(id: f.id), class: "btn btn-primary btn-sm inline" %>
+        <% when 2 %>
+          <%= button_to "Підтримати", increment_path(id: f.id), class: "btn btn-primary btn-lg wide" %>
+        <% else %>
+          <%= button_to "Проголосувати", increment_path(id: f.id), class: "btn btn-primary btn-sm inline" %>
+      <% end %>
     <% end %>
-
      <br>
   <% end %>
   </div>
