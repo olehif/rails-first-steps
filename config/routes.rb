@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   get  '/show/:id',      to: 'surveys#show',      as: :show
   post '/create_q',      to: 'surveys#create_q',  as: :create_q
   post '/create_f',      to: 'surveys#create_f',  as: :create_f
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+
+  get  '/admin',         to: 'admins#index',      as: :admins_index
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
