@@ -6,30 +6,30 @@
   <p style="font-size: 17px !important;"><%= @question.body %></p>
   <br>
   </div>
-  <div class="col-md-4">
-  <div class="thumbnail">
-  <div class="caption">
-  <%  @question.fields.each do |f| %>
-    <h3><%= f.variant %>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <div class="caption">
+          <%  @question.fields.each do |f| %>
+            <h3><%= f.variant %>
 
-    <% if !f.question.active %>
-      <br>
-      <small>голосів: <%= f.count %></small>
-    <% end %>
-    </h3>
+            <% if !f.question.active %>
+              <br>
+              <small>голосів: <%= f.count %></small>
+            <% end %>
+            </h3>
 
-    <% if f.question.active and !current_user.votes.where(question_id: f.question.id).exists? %>
-      <% case f.question.question_type %>
-        <% when 2 %>
-          <%= button_to "Підтримати", increment_path(id: f.id), class: "btn btn-primary btn-lg wide" %>
-        <% else %>
-          <%= button_to "Проголосувати", increment_path(id: f.id), class: "btn btn-primary btn-sm inline" %>
-      <% end %>
-    <% end %>
-     <br>
-  <% end %>
-  </div>
-  </div>
-  </div>
+            <% if f.question.active and !current_user.votes.where(question_id: f.question.id).exists? %>
+              <% case f.question.question_type %>
+                <% when 2 %>
+                  <%= button_to "Підтримати", increment_path(id: f.id), class: "btn btn-primary btn-lg wide" %>
+                <% else %>
+                  <%= button_to "Проголосувати", increment_path(id: f.id), class: "btn btn-primary btn-sm inline" %>
+              <% end %>
+            <% end %>
+             <br>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
