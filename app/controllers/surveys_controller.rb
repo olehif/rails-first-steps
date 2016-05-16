@@ -36,7 +36,7 @@ class SurveysController < ApplicationController
     if    Vote.where(user_id: current_user.id, question_id: @f.question.id).exists?
       redirect_to root_path
     else
-      v = Vote.new(user_id: current_user.id, question_id: @f.question.id)
+      v = Vote.new(user_id: current_user.id, question_id: @f.question.id, field_id: @f.id)
       v.save
       @f.count += 1
       if @f.save
