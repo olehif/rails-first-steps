@@ -1,9 +1,12 @@
+<table class="table table-bordered">
 <% @questions.each do |q| %>
-  <%= q.title %>
-  <% @c=0 %>
-  <% Field.where(question_id: q.id).each do |f| %>
-    <% @c += f.count %>
-  <% end %>
-  Голосів<%= @c %>
-  <br>
+    <tr>
+      <td><%= q.title %></td>
+    <% @c=0 %>
+    <% Field.where(question_id: q.id).each do |f| %>
+      <% @c += f.count %>
+    <% end %>
+    <td>Голосів: <%= @c %></td>
+    </tr>
 <% end %>
+</table>
