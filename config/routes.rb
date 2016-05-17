@@ -4,15 +4,16 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   root 'surveys#index'
-  post '/increment/:id', to: 'surveys#increment', as: :increment
-  get  '/newq',          to: 'surveys#new_q',     as: :newq
-  get  '/newf',          to: 'surveys#new_f',     as: :newf
-  get  '/show/:id',      to: 'surveys#show',      as: :show
-  post '/create_q',      to: 'surveys#create_q',  as: :create_q
-  post '/create_f',      to: 'surveys#create_f',  as: :create_f
+  post '/increment/:id',      to: 'surveys#increment', as: :increment
+  get  '/newq',               to: 'surveys#new_q',     as: :newq
+  get  '/newf',               to: 'surveys#new_f',     as: :newf
+  get  '/show/:id',           to: 'surveys#show',      as: :show
+  post '/create_q',           to: 'surveys#create_q',  as: :create_q
+  post '/create_f',           to: 'surveys#create_f',  as: :create_f
 
-  get  '/admin',         to: 'admins#index',      as: :admins_index
-
+  get  '/admin',              to: 'admins#index',      as: :admins_index
+  get  '/admin/show/:id',     to: 'admins#show',       as: :admins_show
+  post '/admin/close/:id',    to: 'admins#close',      as: :admins_close
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
