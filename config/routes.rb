@@ -4,16 +4,18 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   root 'surveys#index'
-  post '/increment/:id',      to: 'surveys#increment', as: :increment
-  get  '/newq',               to: 'surveys#new_q',     as: :newq
-  get  '/newf',               to: 'surveys#new_f',     as: :newf
-  get  '/show/:id',           to: 'surveys#show',      as: :show
-  post '/create_q',           to: 'surveys#create_q',  as: :create_q
-  post '/create_f',           to: 'surveys#create_f',  as: :create_f
+  post '/increment/:id',      to: 'surveys#increment',       as: :increment
+  get  '/show/:id',           to: 'surveys#show',            as: :show
 
-  get  '/admin',              to: 'admins#index',      as: :admins_index
-  get  '/admin/show/:id',     to: 'admins#show',       as: :admins_show
-  post '/admin/close/:id',    to: 'admins#close',      as: :admins_close
+  get  '/admin',              to: 'admins#index',            as: :admins_index
+  get  '/admin/show/:id',     to: 'admins#show',             as: :admins_show
+  post '/admin/close/:id',    to: 'admins#close',            as: :admins_close
+  get  '/admin/new',          to: 'admins#new',              as: :new_question
+  post '/admin/create',       to: 'admins#create',           as: :create_question
+  get  '/admin/edit/:id',     to: 'admins#edit',             as: :edit_question
+  get  '/admin/new_f/:id',    to: 'admins#new_f',            as: :new_field
+  post '/admin/create_f',     to: 'admins#create_f',         as: :create_field
+  get  '/admin/destroy_f/:id',to: 'admins#destroy_f',        as: :destroy_field
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
