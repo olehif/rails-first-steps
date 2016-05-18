@@ -10,7 +10,7 @@
     <%= simple_form_for @field, url: create_field_path do |f| %>
       <%= f.input :variant %>
       <%= f.hidden_field :question_id, value: @question.id %>
-      <%= f.submit %>
+      <%= f.submit "Додати поле" ,class: "btn btn-primary"%>
     <% end %>
   </div>
 </div>

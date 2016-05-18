@@ -1,5 +1,6 @@
+<%= javascript_include_tag "new_question" %>
 <div class="row">
-  <div class="col-md-9 col-sm-6">
+  <div class="col-md-9">
     <table class="table table-bordered">
     <% @questions.each do |q| %>
         <tr>
@@ -9,6 +10,7 @@
           <% @c += f.count %>
         <% end %>
         <td>Голосів: <%= @c %></td>
+        <td><%= link_to "Редагувати", edit_question_path(id: q.id) %>
         </tr>
     <% end %>
     </table>

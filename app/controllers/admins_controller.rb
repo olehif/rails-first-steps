@@ -21,25 +21,31 @@ class AdminsController < ApplicationController
   def destroy_f
     @field    = Field.find(params[:id])
     @field.destroy
-    respond_to do |format|
-      format.html { redirect_to admins_index_path }
-      format.js
-    end
   end
 
   def create_f
     @field    = Field.new(params.require(:field).permit(:variant, :question_id))
     @field.save
-    respond_to do |format|
-      format.html { redirect_to new_field_path(id: @field.question_id) }
-      format.js
-    end
+    redirect_to new_field_path(id: @filed.question_id)
   end
 
   def create
     @question = Question.new(params.require(:question).permit(:body, :title, :question_type, :active))
     @question.save
-    redirect_to admins_index_path
+    case @question.question_type
+      when 1
+        redirect_to new_field_path(id: @question.id)
+      when 2
+        f=Field.new(question_id: @question.id, variant: "")
+        f.save
+        redirect_to admins_index_path
+      when 3
+        f=Field.new(question_id: @question.id, variant: "За")
+        f.save
+        f=Field.new(question_id: @question.id, variant: "Проти")
+        f.save
+        redirect_to admins_index_path
+    end
   end
 
   def show
