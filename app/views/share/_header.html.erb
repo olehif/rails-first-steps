@@ -1,8 +1,8 @@
 <div class="navbar navbar-default navbar-static-top">
 		<div class="container">
 				<span><%= link_to "Survey", root_path, class: "navbar-brand" %></span>
-
 					<ul class="nav navbar-nav navbar-right">
+							<li><%= link_to "Для адміністраторів", admins_index_path %></li>
 						<% if user_signed_in? %>
 							<li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
 						<% else %>

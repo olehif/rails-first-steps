@@ -1,0 +1,33 @@
+<div>
+  <div class="row">
+  <div class="col-md-6">
+    <div class="page-header"><h2><%= @question.title %>
+      <% if !@question.active %>
+        |<small> Голосування закрите</small>
+      <% end %>
+    </h2></div>
+    <br>
+    <p style="font-size: 17px !important;"><%= @question.body %></p>
+    <br>
+  </div>
+  <div class="col-md-6">
+    <div class="thumbnail">
+      <div class="caption">
+        <% @question.fields.each do |f| %>
+          <h3><%= f.variant %>
+
+            <br>
+            <small>голосів: <%= f.count %></small>
+          </h3>
+
+           <br>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+  <% if @question.active %>
+    <div class="row"><%= button_to "Закрити голосування", admins_close_path(id: @question.id),class: "btn btn-primary btn-lg wide" %></div>
+  <% end %>
+
+</div>

@@ -1,0 +1,9 @@
+<%= simple_form_for @question, url: create_question_path do |f| %>
+
+<%= f.input :title, label: "Тема опитування" %>
+<%= f.input :body, label: "Зміст опитування" %>
+<%= f.input :question_type, collection: {"Варіанти відповідей": 1,"Підтримати": 2 ,"За/Проти": 3}, label: "Тип опитування", as: :radio_buttons %>
+<%= f.hidden_field :active, value: true %>
+<%= f.submit "Зберегти", class: "btn btn-primary vassia" %>
+
+<% end %>

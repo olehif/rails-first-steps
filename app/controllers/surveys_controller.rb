@@ -13,17 +13,6 @@ class SurveysController < ApplicationController
     @question    = Question.new
   end
 
-  def create_q
-    @q = Question.new(params.require(:question).permit(:title,:body))
-    @q.save
-    redirect_to root_path
-  end
-
-  def new_f
-    @field       = Field.new
-    @questions   = Question.all
-  end
-
   def create_f
     @field       = Field.new(params.require(:field).permit(:variant,:question_id))
     @field.count = 0
@@ -36,7 +25,7 @@ class SurveysController < ApplicationController
     if    Vote.where(user_id: current_user.id, question_id: @f.question.id).exists?
       redirect_to root_path
     else
-      v = Vote.new(user_id: current_user.id, question_id: @f.question.id)
+      v = Vote.new(user_id: current_user.id, question_id: @f.question.id, field_id: @f.id)
       v.save
       @f.count += 1
       if @f.save

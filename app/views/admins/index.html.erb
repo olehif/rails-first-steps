@@ -1,9 +1,21 @@
-<% @questions.each do |q| %>
-  <%= q.title %>
-  <% @c=0 %>
-  <% Field.where(question_id: q.id).each do |f| %>
-    <% @c += f.count %>
-  <% end %>
-  Голосів<%= @c %>
-  <br>
-<% end %>
+<%= javascript_include_tag "new_question" %>
+<div class="row">
+  <div class="col-md-9">
+    <table class="table table-bordered">
+    <% @questions.each do |q| %>
+        <tr>
+          <td><%= link_to q.title, admins_show_path(id: q.id) %></td>
+        <% @c=0 %>
+        <% Field.where(question_id: q.id).each do |f| %>
+          <% @c += f.count %>
+        <% end %>
+        <td>Голосів: <%= @c %></td>
+        <td><%= link_to "Редагувати", edit_question_path(id: q.id) %>
+        </tr>
+    <% end %>
+    </table>
+  </div>
+  <div class="col-md-3">
+    <%= link_to "Створити нове опитування", new_question_path %>
+  </div>
+</div>
