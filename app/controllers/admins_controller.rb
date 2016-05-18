@@ -1,4 +1,5 @@
 class AdminsController < ApplicationController
+  before_action :authenticate_admin!
   before_action :find_question, only: [:edit, :show, :close, :new_f]
 
   def index
@@ -19,14 +20,14 @@ class AdminsController < ApplicationController
   end
 
   def destroy_f
-    @field    = Field.find(params[:id])
-    @field.destroy
+    Field.find(params[:id]).destroy
+    redirect_to admins_index_path
   end
 
   def create_f
     @field    = Field.new(params.require(:field).permit(:variant, :question_id))
     @field.save
-    redirect_to new_field_path(id: @filed.question_id)
+    redirect_to new_field_path(id: params.require(:field)[:question_id])
   end
 
   def create
@@ -48,6 +49,17 @@ class AdminsController < ApplicationController
     end
   end
 
+  def update
+    @question =Question.find(params.require(:question)[:id])
+    @question.update(params.require(:question).permit(:body, :title, :question_type, :active))
+    @question.save
+    if @question.question_type == 1
+      redirect_to new_field_path(id: @question.id)
+    else
+      redirect_to admins_index_path
+    end
+  end
+
   def show
   end
 
@@ -60,6 +72,6 @@ class AdminsController < ApplicationController
   private
 
   def find_question
-    @question = Question.find(params[:id])
+    @question= Question.find(params[:id])
   end
 end

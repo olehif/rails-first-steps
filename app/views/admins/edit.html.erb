@@ -1,5 +1,19 @@
+<%= javascript_include_tag "edit_question" %>
 <div class="row">
   <div class="col-md-6">
-    <%= render 'form' %>
+    <%= simple_form_for @question, url: update_question_path do |f| %>
+
+    <%= f.input :title, label: "Тема опитування" %>
+    <%= f.input :body, label: "Зміст опитування" %>
+    <%= f.hidden_field :question_type, value: @question.question_type %>
+    <%= f.hidden_field :active, value: true %>
+    <%= f.hidden_field :id, value: @question.id %>
+    <% if @question.question_type == 1 %>
+      <%= f.submit "Зберегти й перейти до редагування полів", class: "btn btn-primary vassia" %>
+    <% else %>
+      <%= f.submit "Зберегти", class: "btn btn-primary vassia" %> 
+    <% end %>
+
+    <% end %>
   </div>
 </div>

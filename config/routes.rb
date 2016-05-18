@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -12,10 +13,12 @@ Rails.application.routes.draw do
   post '/admin/close/:id',    to: 'admins#close',            as: :admins_close
   get  '/admin/new',          to: 'admins#new',              as: :new_question
   post '/admin/create',       to: 'admins#create',           as: :create_question
+  patch '/admin/update',       to: 'admins#update',           as: :update_question
   get  '/admin/edit/:id',     to: 'admins#edit',             as: :edit_question
   get  '/admin/new_f/:id',    to: 'admins#new_f',            as: :new_field
   post '/admin/create_f',     to: 'admins#create_f',         as: :create_field
   get  '/admin/destroy_f/:id',to: 'admins#destroy_f',        as: :destroy_field
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
