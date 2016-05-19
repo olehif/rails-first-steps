@@ -68,9 +68,9 @@ ActiveRecord::Schema.define(version: 20160518162527) do
 
   create_table "votes", force: :cascade do |t|
     t.integer  "user_id"
+    t.integer  "question_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "question_id"
     t.integer  "field_id"
   end
 
