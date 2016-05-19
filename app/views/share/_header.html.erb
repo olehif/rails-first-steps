@@ -5,11 +5,12 @@
 						<% if controller_name == "admins" %>
 							<% if admin_signed_in? %>
 								<li><%= link_to "Admin Sign Out", destroy_admin_session_path, method: :delete %></li>
+								<li><%= link_to "Admin start", admins_index_path %></li>
 							<% else %>
 								<li><%= link_to "Admin Sign In", new_admin_session_path %></li>
 							<% end %>
 						<% else %>
-								<li><%= link_to "Для адміністраторів", admins_index_path %></li>
+								<li><%= link_to "Admin", admins_index_path %></li>
 							<% if user_signed_in? %>
 								<li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
 							<% else %>
