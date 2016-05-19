@@ -16,7 +16,7 @@ gem 'simple_form'
 
 group :production do
   gem 'pg'
-  gem 'rails12_factor'
+  gem 'rails_12factor'
 end
 
 group :development, :test do
