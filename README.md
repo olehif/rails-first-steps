@@ -1,28 +1,31 @@
-== README
+**Платформа для проведення голосувань.**
+Автор - **Олег Фейло**. E-mail: **oleh@i.ua.**
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Онлайн демо: [https://insilico.herokuapp.com](https://insilico.herokuapp.com)
 
-Things you may want to cover:
+> Дані адміністратора:
+> e-mail: admin@admin.ua
+> pass: administrator
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Задля безпеки реєстрація для адміністраторів відключена. Адміністратора можна створити лише із консолі.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+----------
+
+Що працює:
+
+ - PostgreSQL (production)
+ - Створення питань для голосування трьох типів
+ - Проміжні результати в адмінпанелі
+ - Закривання питань
+ - Реєстрація для користувачів
+ - Перегляд, голосування
+ - Повідомлення із подякою
+ - Disqus
+
+Що не дуже:
+
+- Не надто красиве повідомлення із подякою
+- Створення полів до голосувань на окремій сторінці ( без Ajax )
+ 
+
