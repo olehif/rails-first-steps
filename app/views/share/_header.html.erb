@@ -2,14 +2,21 @@
 		<div class="container">
 				<span><%= link_to "Survey", root_path, class: "navbar-brand" %></span>
 					<ul class="nav navbar-nav navbar-right">
-							<li><%= link_to "Для адміністраторів", admins_index_path %></li>
-						<% if user_signed_in? %>
-							<li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+						<% if controller_name == "admins" %>
+							<% if admin_signed_in? %>
+								<li><%= link_to "Admin Sign Out", destroy_admin_session_path, method: :delete %></li>
+							<% else %>
+								<li><%= link_to "Admin Sign In", new_admin_session_path %></li>
+							<% end %>
 						<% else %>
-							<li><%= link_to "Sign In", new_user_session_path %></li>
-							<li><%= link_to "Sign Up", new_user_registration_path %></li>
+								<li><%= link_to "Для адміністраторів", admins_index_path %></li>
+							<% if user_signed_in? %>
+								<li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+							<% else %>
+								<li><%= link_to "Sign In", new_user_session_path %></li>
+								<li><%= link_to "Sign Up", new_user_registration_path %></li>
+							<% end %>
 						<% end %>
-
 					</ul>
 
 		</div>
